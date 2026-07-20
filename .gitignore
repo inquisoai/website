@@ -1,0 +1,15 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# generated docs (synced from the inquiso submodule by scripts/sync-docs.mjs)
+src/content/docs/docs/
+
+# env & logs
+.env
+.env.*
+*.log
+.DS_Store

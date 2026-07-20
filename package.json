@@ -1,0 +1,25 @@
+{
+  "name": "inquiso-website",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Source for inquisoai.com — the Inquiso project website (Astro + Starlight).",
+  "packageManager": "pnpm@10.8.1",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "sync-docs": "node scripts/sync-docs.mjs",
+    "predev": "node scripts/sync-docs.mjs",
+    "dev": "astro dev",
+    "prebuild": "node scripts/sync-docs.mjs",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3",
+    "@astrojs/starlight": "^0.41",
+    "astro": "^7",
+    "sharp": "^0.34"
+  }
+}

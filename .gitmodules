@@ -1,0 +1,3 @@
+[submodule "inquiso"]
+	path = inquiso
+	url = https://github.com/inquisoai/inquiso.git
