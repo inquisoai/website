@@ -16,6 +16,7 @@ export default defineConfig({
         alt: "Inquiso",
       },
       favicon: "/favicon.svg",
+      customCss: ["./src/styles/theme.css"],
       social: [
         {
           icon: "github",

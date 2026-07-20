@@ -1,0 +1,59 @@
+/* Match the docs (Starlight) to the landing page: Inter, monochrome, hairlines. */
+@import "@fontsource-variable/inter/index.css";
+
+:root {
+  --sl-font: "Inter Variable", system-ui, -apple-system, sans-serif;
+  --sl-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Dark theme (Starlight default) */
+:root {
+  --sl-color-accent-low: #26262a;
+  --sl-color-accent: #52525b;
+  --sl-color-accent-high: #ececee;
+  --sl-color-text-accent: #ececee;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #ececee;
+  --sl-color-gray-2: #c9c9ce;
+  --sl-color-gray-3: #9a9aa0;
+  --sl-color-gray-4: #6b6b70;
+  --sl-color-gray-5: #3a3a3f;
+  --sl-color-gray-6: #202024;
+  --sl-color-gray-7: #161619;
+  --sl-color-black: #0e0e10;
+  --sl-color-bg: #0e0e10;
+  --sl-color-bg-nav: #0e0e10;
+  --sl-color-bg-sidebar: #0e0e10;
+  --sl-color-hairline: #202024;
+  --sl-color-hairline-light: #26262a;
+  --sl-color-hairline-shade: #1a1a1d;
+}
+
+/* Light theme */
+:root[data-theme="light"] {
+  --sl-color-accent-low: #e7e7e9;
+  --sl-color-accent: #a1a1aa;
+  --sl-color-accent-high: #1c1c1e;
+  --sl-color-text-accent: #1c1c1e;
+  --sl-color-white: #1c1c1e;
+  --sl-color-gray-1: #1c1c1e;
+  --sl-color-gray-2: #3a3a3f;
+  --sl-color-gray-3: #6b6b70;
+  --sl-color-gray-4: #8a8a90;
+  --sl-color-gray-5: #c7c7cc;
+  --sl-color-gray-6: #e7e7e9;
+  --sl-color-gray-7: #f4f4f5;
+  --sl-color-black: #ffffff;
+  --sl-color-bg: #ffffff;
+  --sl-color-bg-nav: #ffffff;
+  --sl-color-bg-sidebar: #fafafa;
+  --sl-color-hairline: #ececee;
+  --sl-color-hairline-light: #e7e7e9;
+  --sl-color-hairline-shade: #f0f0f1;
+}
+
+/* Small refinements so it reads like the landing */
+.site-title { font-weight: 600; letter-spacing: -0.01em; }
+:root { --sl-nav-height: 4rem; }
+a.site-title img { border-radius: 6px; }
+h1, h2, h3 { letter-spacing: -0.015em; }
