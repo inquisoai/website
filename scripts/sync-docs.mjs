@@ -33,7 +33,7 @@ const EXCLUDE_FILES = new Set([
 const EXCLUDE_DIRS = new Set(["hackathon", "ai-sdk"]);
 
 // Root docs sorted into the "guide" group; everything else at root -> "design".
-const GUIDE_FILES = new Set(["00-vision.md", "09-roadmap.md", "10-user-guide.md", "demo-script.md"]);
+const GUIDE_FILES = new Set(["00-vision.md", "09-roadmap.md", "10-user-guide.md"]);
 
 if (!existsSync(DOCS_SRC)) {
   console.error(`[sync-docs] Missing ${DOCS_SRC}. Run: git submodule update --init`);
@@ -192,7 +192,6 @@ are not writing code:
 - [Vision & Scope](/docs/guide/00-vision)
 - [User Guide](/docs/guide/10-user-guide)
 - [Roadmap](/docs/guide/09-roadmap)
-- [Demo Script](/docs/guide/demo-script)
 
 ## Design
 
@@ -218,10 +217,6 @@ The system that lets Inquiso remember *how* tasks were done — locally and insp
 ## Architecture Decision Records
 
 The "why" behind the big calls — see the [ADRs](/docs/adr/0001-auth-strategy-byok-plus-optin-oauth).
-
-## Deployment
-
-- [Alibaba Cloud (Qwen) deployment](/docs/deployment/alibaba-cloud)
 `,
   "utf8",
 );

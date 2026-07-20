@@ -33,7 +33,6 @@ export default defineConfig({
         { label: "Design", items: [{ autogenerate: { directory: "docs/design" } }] },
         { label: "Memory Agent", items: [{ autogenerate: { directory: "docs/memory-agent" } }] },
         { label: "ADRs", items: [{ autogenerate: { directory: "docs/adr" } }] },
-        { label: "Deployment", items: [{ autogenerate: { directory: "docs/deployment" } }] },
       ],
     }),
     sitemap(),
