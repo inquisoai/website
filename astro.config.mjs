@@ -3,9 +3,12 @@ import sitemap from "@astrojs/sitemap";
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://inquisoai.com",
+
   integrations: [
     starlight({
       title: "Inquiso",
@@ -37,4 +40,6 @@ export default defineConfig({
     }),
     sitemap(),
   ],
+
+  adapter: cloudflare(),
 });
