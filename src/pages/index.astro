@@ -5,50 +5,18 @@ import logo from "../assets/logo.svg";
 const repo = "https://github.com/inquisoai/inquiso";
 const org = "https://github.com/inquisoai";
 
-const verbs = [
-  {
-    title: "Ask",
-    body: "“What does this page say about refunds?” Grounded answers with the page as context — no copy-pasting into another tab.",
-    icon: `<path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/>`,
-  },
-  {
-    title: "Summarize",
-    body: "“Give me the 5 key points.” Condense long articles, docs, and threads — one page or an entire window of tabs.",
-    icon: `<path d="M4 6h16M4 12h16M4 18h10"/>`,
-  },
-  {
-    title: "Assess",
-    body: "“Is this source trustworthy? What’s the bias?” Weigh credibility before you trust what you’re reading.",
-    icon: `<path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/>`,
-  },
-  {
-    title: "Act",
-    body: "“Fill this form” or “find the cheapest option and add it to cart.” Watch it work — sensitive actions need your OK.",
-    icon: `<path d="M13 2L3 14h8l-1 8 10-12h-8z"/>`,
-  },
+const does = [
+  ["Ask", "Grounded answers with the page as context — no copy-pasting into another tab."],
+  ["Summarize", "The key points of a long article, a document, or a whole window of tabs."],
+  ["Assess", "Whether a source is trustworthy, and what its bias is, before you rely on it."],
+  ["Act", "Fill a form, compare options, complete a task — sensitive actions need your confirmation."],
 ];
 
 const principles = [
-  {
-    title: "Bring your own model",
-    body: "Free and fully local with Chrome Built-in AI (Gemini Nano), or your own key for OpenAI, Anthropic, Google, or Qwen. You control cost and data.",
-    icon: `<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>`,
-  },
-  {
-    title: "Transparent agent",
-    body: "Every reasoning step and action is shown in real time. Nothing irreversible happens without explicit confirmation — enforced in the background, not by the model.",
-    icon: `<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>`,
-  },
-  {
-    title: "Local-first & serverless",
-    body: "No Inquiso backend, no telemetry, no sync. Your data goes only to the AI provider you choose — nowhere else.",
-    icon: `<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>`,
-  },
-  {
-    title: "MemoryAgent",
-    body: "Inquiso remembers how tasks were done — typed, scoped, inspectable memory and learned browser skills that live on your machine and can never authorize an action.",
-    icon: `<path d="M12 2a7 7 0 0 0-7 7c0 3 2 4 2 7h10c0-3 2-4 2-7a7 7 0 0 0-7-7z"/><path d="M9 21h6"/>`,
-  },
+  ["Bring your own model", "Free and local with Chrome Built-in AI, or your own key for OpenAI, Anthropic, Google, or Qwen."],
+  ["Transparent", "Every reasoning step and action is shown. Nothing irreversible happens without your confirmation."],
+  ["Local-first & serverless", "No Inquiso backend, no telemetry, no sync. Data goes only to the provider you choose."],
+  ["Private by design", "Manifest V3, a locked-down CSP, encrypted keys, and first-class prompt-injection defenses."],
 ];
 ---
 
@@ -58,352 +26,170 @@ const principles = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>Inquiso — Chat with any web page</title>
-    <meta
-      name="description"
-      content="An open-source AI sidebar and transparent agent for your browser. Ask, summarize, assess, and act on any page — with your own model, entirely on your machine."
-    />
+    <meta name="description" content="An open-source AI sidebar and transparent agent for your browser. Ask, summarize, assess, and act on any page — with your own model, entirely on your machine." />
     <meta property="og:title" content="Inquiso — Chat with any web page" />
-    <meta
-      property="og:description"
-      content="Open-source, local-first AI sidebar and agent for the web. Bring your own model."
-    />
-    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Open-source, local-first AI sidebar and agent for the web. Bring your own model." />
     <meta property="og:url" content="https://inquisoai.com" />
   </head>
   <body>
-    <div class="glow" aria-hidden="true"></div>
-
-    <header class="nav">
-      <a class="brand" href="/">
-        <img src={logo.src} alt="" width="28" height="28" />
-        <span>Inquiso</span>
-      </a>
-      <nav class="nav-links">
-        <a href="/docs/">Docs</a>
-        <a href={org}>Organization</a>
-        <a href={repo} class="ghost">GitHub ↗</a>
-        <a href={repo} class="btn btn-sm">Get the extension</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="hero">
-        <a class="pill" href={repo}>
-          <span class="dot"></span> Open source · Local-first · MIT
-        </a>
-        <h1>
-          Chat with <span class="grad">any web page</span>.
-        </h1>
-        <p class="lede">
-          Inquiso is an open-source AI sidebar and transparent agent for your browser.
-          Ask questions, summarize, check trustworthiness, and take actions — on a page,
-          a tab group, or a whole window. Using your own model, entirely on your machine.
-        </p>
-        <div class="cta">
-          <a class="btn" href={repo}>Get the extension</a>
-          <a class="btn btn-outline" href="/docs/">Read the docs</a>
-        </div>
-        <p class="meta">Works in Chrome, Firefox &amp; Chromium · No account · No telemetry</p>
-
-        <div class="mock" aria-hidden="true">
-          <div class="window">
-            <div class="titlebar">
-              <span class="tl r"></span><span class="tl y"></span><span class="tl g"></span>
-              <div class="omni">inquisoai.com</div>
-            </div>
-            <div class="body">
-              <div class="page">
-                <div class="ln w70"></div>
-                <div class="ln w90"></div>
-                <div class="ln w50"></div>
-                <div class="ln block"></div>
-                <div class="ln w80"></div>
-                <div class="ln w60"></div>
-                <div class="ln w85"></div>
-              </div>
-              <aside class="side">
-                <div class="side-head">
-                  <img src={logo.src} alt="" width="20" height="20" />
-                  <span>Inquiso</span>
-                </div>
-                <div class="bubble user">Summarize this &amp; is the source credible?</div>
-                <div class="trace">
-                  <span class="tick">✓</span> Reading page · 1,204 words
-                </div>
-                <div class="trace">
-                  <span class="tick">✓</span> Assessing source &amp; bias
-                </div>
-                <div class="bubble ai">
-                  <b>3 key points</b>, and the source is <b>reputable</b> with a mild
-                  pro-industry lean. Citations linked inline.
-                </div>
-                <div class="composer"><span>Ask anything…</span></div>
-              </aside>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="band">
-        <div class="section-head">
-          <h2>One sidebar, four things you actually do</h2>
-          <p>Point it at what's in front of you and go.</p>
-        </div>
-        <div class="grid grid-4">
-          {verbs.map((v) => (
-            <article class="card">
-              <div class="ico"><svg viewBox="0 0 24 24" set:html={v.icon} /></div>
-              <h3>{v.title}</h3>
-              <p>{v.body}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section class="band">
-        <div class="section-head">
-          <h2>Built on principles, not lock-in</h2>
-          <p>Private and secure by design — Manifest V3, locked CSP, encrypted keys, prompt-injection defenses.</p>
-        </div>
-        <div class="grid grid-2">
-          {principles.map((p) => (
-            <article class="card row">
-              <div class="ico"><svg viewBox="0 0 24 24" set:html={p.icon} /></div>
-              <div>
-                <h3>{p.title}</h3>
-                <p>{p.body}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section class="finale">
-        <h2>Bring your own model. Keep your data.</h2>
-        <p>Free on-device AI or your own key — you're always in control.</p>
-        <div class="cta">
-          <a class="btn" href={repo}>Get the extension</a>
-          <a class="btn btn-outline" href="/docs/10-user-guide">Read the user guide</a>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="foot-brand">
+    <div class="wrap">
+      <header>
         <a class="brand" href="/">
           <img src={logo.src} alt="" width="24" height="24" />
-          <span>Inquiso</span>
+          Inquiso
         </a>
-        <p>Chat with any web page — open source, local-first, serverless.</p>
-      </div>
-      <div class="foot-cols">
-        <div>
-          <h4>Product</h4>
-          <a href="/docs/">Documentation</a>
-          <a href="/docs/10-user-guide">User guide</a>
-          <a href={repo}>Extension repo</a>
-        </div>
-        <div>
-          <h4>Project</h4>
+        <nav>
+          <a href="/docs/">Docs</a>
+          <a href={repo}>GitHub</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <p class="eyebrow">Open-source browser extension</p>
+          <h1>Chat with any web page.</h1>
+          <p class="lead">
+            Inquiso is an AI sidebar and transparent agent for your browser. It reads the page
+            you're on — or a whole tab group, or a window — and answers, summarizes, checks
+            trustworthiness, and takes actions. Local-first, serverless, and it uses your own model.
+          </p>
+          <div class="actions">
+            <a class="button" href={repo}>Get the extension</a>
+            <a class="textlink" href="/docs/">Documentation &rarr;</a>
+          </div>
+          <p class="note">Chrome · Firefox · Chromium — no account, no telemetry.</p>
+        </section>
+
+        <section>
+          <h2>What it does</h2>
+          <dl>
+            {does.map(([t, d]) => (
+              <div class="rowitem">
+                <dt>{t}</dt>
+                <dd>{d}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
+        <section>
+          <h2>Principles</h2>
+          <dl>
+            {principles.map(([t, d]) => (
+              <div class="rowitem">
+                <dt>{t}</dt>
+                <dd>{d}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
+        <section class="closing">
+          <p>Free on-device AI or your own key — you're always in control.</p>
+          <div class="actions">
+            <a class="button" href={repo}>Get the extension</a>
+            <a class="textlink" href="/docs/10-user-guide">Read the user guide &rarr;</a>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <nav>
+          <a href="/docs/">Docs</a>
+          <a href={repo}>GitHub</a>
           <a href={`${org}/.github/blob/main/GOVERNANCE.md`}>Governance</a>
           <a href={`${org}/.github/blob/main/CONTRIBUTING.md`}>Contributing</a>
           <a href={`${repo}/security/advisories/new`}>Security</a>
-        </div>
-        <div>
-          <h4>Community</h4>
-          <a href={`${repo}/discussions`}>Discussions</a>
-          <a href={`${repo}/issues`}>Issues</a>
-          <a href={org}>GitHub org</a>
-        </div>
-      </div>
-      <div class="foot-bottom">
-        <span>© 2026 Inquiso · <a href={`${repo}/blob/main/LICENSE`}>MIT</a></span>
-      </div>
-    </footer>
+        </nav>
+        <p>© 2026 Inquiso · <a href={`${repo}/blob/main/LICENSE`}>MIT</a></p>
+      </footer>
+    </div>
 
     <style is:global>
       :root {
-        --bg: #08080c;
-        --bg-soft: #0e0e15;
-        --panel: #14141d;
-        --panel-2: #1a1a24;
-        --border: rgba(255, 255, 255, 0.09);
-        --border-strong: rgba(255, 255, 255, 0.16);
-        --text: #edecf2;
-        --muted: #9b9baa;
-        --accent: #8b7cff;
-        --accent-2: #38d2d8;
-        --radius: 16px;
-        --maxw: 1120px;
+        --bg: #ffffff;
+        --text: #1c1c1e;
+        --muted: #6b6b70;
+        --line: #e7e7e9;
+        --link: #1c1c1e;
       }
-      * { box-sizing: border-box; min-width: 0; }
-      html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #0e0e10; --text: #ececee; --muted: #9a9aa0; --line: #26262a; --link: #ececee; }
+        .brand img { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14); }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
       body {
         margin: 0;
         font-family: "Inter Variable", system-ui, -apple-system, sans-serif;
         background: var(--bg);
         color: var(--text);
-        line-height: 1.6;
+        line-height: 1.65;
+        font-size: 17px;
         -webkit-font-smoothing: antialiased;
-        overflow-x: hidden;
       }
+      .wrap { max-width: 640px; margin: 0 auto; padding: 0 24px; }
       a { color: inherit; text-decoration: none; }
-      h1, h2, h3, h4 { line-height: 1.1; letter-spacing: -0.02em; margin: 0; }
-      p { margin: 0; }
-      img { max-width: 100%; }
 
-      .glow {
-        position: absolute; top: -280px; left: 50%; transform: translateX(-50%);
-        width: min(1100px, 100vw); height: 700px; pointer-events: none; z-index: 0;
-        background: radial-gradient(50% 50% at 50% 50%, rgba(139,124,255,0.28), transparent 70%),
-          radial-gradient(40% 40% at 70% 30%, rgba(56,210,216,0.20), transparent 70%);
-        filter: blur(20px);
-      }
-
-      /* Nav */
-      .nav {
-        position: sticky; top: 0; z-index: 50;
+      header {
         display: flex; align-items: center; justify-content: space-between;
-        gap: 16px; padding: 16px 24px;
-        max-width: var(--maxw); margin: 0 auto;
-        backdrop-filter: blur(10px);
+        padding: 28px 0; margin-bottom: 40px;
       }
-      .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; }
-      .brand img { border-radius: 7px; }
-      .nav-links { display: flex; align-items: center; gap: 22px; font-size: 15px; color: var(--muted); }
-      .nav-links a:not(.btn):hover { color: var(--text); }
-      .nav-links .ghost { color: var(--muted); }
-      @media (max-width: 720px) {
-        .nav-links a:not(.btn) { display: none; }
+      .brand { display: inline-flex; align-items: center; gap: 9px; font-weight: 600; font-size: 16px; }
+      .brand img { border-radius: 6px; }
+      header nav { display: flex; gap: 22px; font-size: 15px; color: var(--muted); }
+      header nav a:hover { color: var(--text); }
+
+      .eyebrow {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 13px; letter-spacing: 0.02em; color: var(--muted);
+        margin: 0 0 18px; text-transform: none;
+      }
+      h1 {
+        font-size: clamp(34px, 6vw, 46px); font-weight: 600; letter-spacing: -0.02em;
+        line-height: 1.1; margin: 0;
+      }
+      .lead { color: var(--muted); font-size: 19px; margin: 22px 0 0; }
+
+      .actions { display: flex; align-items: center; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
+      .button {
+        display: inline-flex; align-items: center; padding: 10px 18px; border-radius: 8px;
+        background: var(--text); color: var(--bg); font-weight: 500; font-size: 15px;
+        transition: opacity .15s ease;
+      }
+      .button:hover { opacity: 0.85; }
+      .textlink { color: var(--muted); font-size: 15px; }
+      .textlink:hover { color: var(--text); }
+      .note { color: var(--muted); font-size: 14px; margin: 18px 0 0; }
+
+      section { padding: 56px 0; }
+      section + section { border-top: 1px solid var(--line); }
+      .hero { padding-top: 8px; padding-bottom: 56px; border-bottom: 1px solid var(--line); }
+
+      h2 {
+        font-size: 14px; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase;
+        color: var(--muted); margin: 0 0 8px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      dl { margin: 0; }
+      .rowitem { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+      .rowitem:last-child { border-bottom: 0; }
+      dt { font-weight: 600; font-size: 16px; }
+      dd { margin: 0; color: var(--muted); font-size: 16px; }
+      @media (max-width: 560px) {
+        .rowitem { grid-template-columns: 1fr; gap: 4px; }
       }
 
-      /* Buttons */
-      .btn {
-        display: inline-flex; align-items: center; justify-content: center;
-        padding: 12px 22px; border-radius: 12px; font-weight: 600; font-size: 15px;
-        background: linear-gradient(180deg, #9a8dff, #7c6cff);
-        color: #0b0b12; border: 1px solid transparent;
-        box-shadow: 0 8px 30px rgba(124,108,255,0.35); transition: transform .12s ease, box-shadow .12s ease;
-        white-space: nowrap;
-      }
-      .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 36px rgba(124,108,255,0.5); }
-      .btn-sm { padding: 8px 16px; font-size: 14px; }
-      .btn-outline {
-        background: transparent; color: var(--text);
-        border: 1px solid var(--border-strong); box-shadow: none;
-      }
-      .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.04); }
+      .closing p { font-size: 19px; margin: 0; }
 
-      main { position: relative; z-index: 1; }
-
-      /* Hero */
-      .hero { max-width: 860px; margin: 0 auto; padding: 64px 24px 0; text-align: center; }
-      .pill {
-        display: inline-flex; align-items: center; gap: 8px;
-        padding: 6px 14px; border-radius: 999px; font-size: 13px; color: var(--muted);
-        border: 1px solid var(--border); background: rgba(255,255,255,0.03);
+      footer {
+        border-top: 1px solid var(--line); padding: 32px 0 56px;
+        display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
       }
-      .pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 10px var(--accent-2); }
-      .hero h1 {
-        font-size: clamp(40px, 7vw, 76px); font-weight: 800; margin: 22px 0 0;
-      }
-      .grad {
-        background: linear-gradient(100deg, #a99dff 10%, #38d2d8 90%);
-        -webkit-background-clip: text; background-clip: text; color: transparent;
-      }
-      .lede { margin: 22px auto 0; max-width: 640px; font-size: clamp(16px, 2.2vw, 19px); color: var(--muted); }
-      .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
-      .meta { margin-top: 16px; font-size: 13px; color: #6f6f7e; }
-
-      /* Mockup */
-      .mock { margin: 56px auto 0; max-width: 1000px; perspective: 1600px; }
-      .window {
-        border: 1px solid var(--border-strong); border-radius: 14px; overflow: hidden;
-        background: var(--panel);
-        box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.02);
-      }
-      .titlebar {
-        display: flex; align-items: center; gap: 8px; padding: 12px 16px;
-        background: var(--panel-2); border-bottom: 1px solid var(--border);
-      }
-      .tl { width: 11px; height: 11px; border-radius: 50%; }
-      .tl.r { background: #ff5f57; } .tl.y { background: #febc2e; } .tl.g { background: #28c840; }
-      .omni {
-        margin-left: 12px; flex: 1; max-width: 340px; padding: 6px 14px; border-radius: 8px;
-        background: #0d0d14; color: #7f7f8e; font-size: 13px; border: 1px solid var(--border);
-      }
-      .window .body { display: grid; grid-template-columns: 1fr 300px; min-height: 340px; text-align: left; }
-      .page { padding: 28px; display: flex; flex-direction: column; gap: 14px; background: #0c0c12; }
-      .ln { height: 12px; border-radius: 6px; background: rgba(255,255,255,0.06); }
-      .ln.block { height: 96px; border-radius: 10px; background: rgba(255,255,255,0.04); }
-      .w90 { width: 90%; } .w85 { width: 85%; } .w80 { width: 80%; } .w70 { width: 70%; } .w60 { width: 60%; } .w50 { width: 50%; }
-      .side {
-        border-left: 1px solid var(--border); background: var(--panel);
-        padding: 18px 16px; display: flex; flex-direction: column; gap: 12px;
-      }
-      .side-head { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; padding-bottom: 6px; }
-      .side-head img { border-radius: 6px; }
-      .bubble { padding: 10px 13px; border-radius: 12px; font-size: 13.5px; }
-      .bubble.user { background: linear-gradient(180deg, #7c6cff, #6a5af0); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; max-width: 90%; }
-      .bubble.ai { background: var(--panel-2); border: 1px solid var(--border); color: var(--text); border-bottom-left-radius: 4px; }
-      .bubble.ai b { color: #fff; }
-      .trace { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 7px; }
-      .trace .tick { color: var(--accent-2); font-weight: 700; }
-      .composer { margin-top: auto; padding: 10px 13px; border-radius: 10px; border: 1px solid var(--border); color: #6f6f7e; font-size: 13px; background: #0d0d14; }
-      @media (max-width: 640px) { .window .body { grid-template-columns: 1fr; } .page { display: none; } }
-
-      /* Sections */
-      .band { max-width: var(--maxw); margin: 0 auto; padding: 96px 24px 0; }
-      .section-head { text-align: center; max-width: 620px; margin: 0 auto 44px; }
-      .section-head h2 { font-size: clamp(28px, 4.5vw, 40px); font-weight: 800; }
-      .section-head p { margin-top: 14px; color: var(--muted); font-size: 17px; }
-      .grid { display: grid; gap: 18px; }
-      .grid-4 { grid-template-columns: repeat(4, 1fr); }
-      .grid-2 { grid-template-columns: repeat(2, 1fr); }
-      @media (max-width: 900px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
-      @media (max-width: 620px) { .grid-4, .grid-2 { grid-template-columns: 1fr; } }
-      .card {
-        background: linear-gradient(180deg, var(--panel), var(--bg-soft));
-        border: 1px solid var(--border); border-radius: var(--radius); padding: 24px;
-        transition: border-color .15s ease, transform .15s ease;
-      }
-      .card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
-      .card.row { display: flex; gap: 16px; align-items: flex-start; }
-      .card h3 { font-size: 18px; margin-bottom: 8px; margin-top: 14px; }
-      .card.row h3 { margin-top: 0; }
-      .card p { color: var(--muted); font-size: 14.5px; }
-      .ico {
-        width: 42px; height: 42px; flex: 0 0 42px; border-radius: 11px;
-        display: grid; place-items: center;
-        background: rgba(139,124,255,0.12); border: 1px solid rgba(139,124,255,0.25);
-      }
-      .ico svg { width: 21px; height: 21px; fill: none; stroke: var(--accent); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
-
-      /* Finale */
-      .finale {
-        max-width: var(--maxw); margin: 110px auto 0; padding: 64px 24px; text-align: center;
-        border-top: 1px solid var(--border);
-        background: radial-gradient(60% 120% at 50% 0%, rgba(139,124,255,0.10), transparent 70%);
-      }
-      .finale h2 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; }
-      .finale p { color: var(--muted); font-size: 18px; margin-top: 14px; }
-      .finale .cta { margin-top: 30px; }
-
-      /* Footer */
-      .footer {
-        max-width: var(--maxw); margin: 80px auto 0; padding: 48px 24px 56px;
-        border-top: 1px solid var(--border);
-        display: grid; grid-template-columns: 1.4fr 2fr; gap: 40px;
-      }
-      .foot-brand p { color: var(--muted); font-size: 14px; margin-top: 12px; max-width: 260px; }
-      .foot-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-      .foot-cols h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: #6f6f7e; margin-bottom: 12px; }
-      .foot-cols a { display: block; color: var(--muted); font-size: 14px; padding: 4px 0; }
-      .foot-cols a:hover { color: var(--text); }
-      .foot-bottom { grid-column: 1 / -1; border-top: 1px solid var(--border); padding-top: 24px; color: #6f6f7e; font-size: 13px; }
-      .foot-bottom a { color: var(--muted); }
-      @media (max-width: 720px) { .footer { grid-template-columns: 1fr; gap: 32px; } }
-      @media (max-width: 560px) { .foot-cols { grid-template-columns: 1fr 1fr; } }
+      footer nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
+      footer nav a:hover { color: var(--text); }
+      footer p { font-size: 14px; color: var(--muted); margin: 0; }
+      footer p a { text-decoration: underline; text-underline-offset: 2px; }
     </style>
   </body>
 </html>
